@@ -9,68 +9,71 @@ if (!isNaN(playerSelection) || playerSelection != 'ROCK' && playerSelection != '
     console.log("Invalid Input")
 }
 
+let computerScore = parseInt(0);
+let playerScore = parseInt(0);
+let tiedScore = parseInt(0);
+
 function playRound (computerSelection, playerSelection) {
-    if (computerSelection == 'ROCK' && playerSelection == 'SCISSORS'){
-        computerScore++;
-        return "You LOSE! Rock beats Scissors!";
+    if (playerSelection === 'ROCK') {
+        if (computerScore === 'SCISSORS'){
+            playerScore++;
+            return "You WIN! Rock beats Scissors!"
+        }else if (computerScore === 'ROCK'){
+            tiedScore++;
+            return "Tie Game!"
+        }else  if (computerScore === 'PAPER'){
+            playerScore++;
+            return "You LOSE! Paper beats Rock!"
+        }
     }
-    else if (computerSelection == 'SCISSORS' && playerSelection == 'PAPER'){
-        computerScore++;
-        return "You LOSE! Scissors beats Paper!";
+
+    if (playerSelection === 'PAPER') {
+        if (computerScore === 'ROCK'){
+            playerScore++;
+            return "You Win! Paper beats Rock!"
+        }else if (computerScore === 'PAPER'){
+            tiedScore++;
+            return "Tie Game!"
+        }else if (computerScore == 'SCISSORS'){
+            computerScore++;
+            return "You LOSE! Scissors beats Paper!"
+        }
     }
-    else if (playerSelection == 'ROCK' && computerSelection == 'SCISSORS'){
-        playerScore++;
-        return "You WIN! Rock beats Scissors!";
-    }
-    else if (playerSelection == 'SCISSORS' && computerSelection == 'PAPER'){
-        playerScore++;
-        return "You WIN! Scissors beats Paper!";
-    }
-    else if (playerSelection === computerSelection){
-        return "It ends in a TIE";
+
+    if (playerScore === 'SCISSORS') {
+        if (computerSelection === 'PAPER'){
+            playerScore++;
+            return "You LOSE! Scissors beats Paper!"
+        }else if (computerSelection === 'SCISSORS'){
+            tiedScore++;
+            return "Tie Game!"
+        }else if (computerScore === 'ROCK'){
+            computerScore++;
+            return "You LOSE! Rock beats Scissors!"
+        }
     }
 }
+
+
 const computerSelection = computerPlay();
-playRound(playerSelection, computerSelection);
+playRound(computerSelection, playerSelection);
 
 
 
-computerScore = 0;
-playerScore = 0;
-rounds = 0;
-let playerValue = playerSelection;
-let computerValue = computerSelection;
-
-function game () {
+function playGame (){
     for (let i = 0; i < 5; i++){
-        playerValue;
-        console.log("You chose" + playerSelection);
-
-        computerValue;
-        console.log("CPU chose" + computerSelection)
-
-        if (computerScore > playerScore){
+        prompt();
+        const computerSelection = computerPlay ();
+        console.log(playRound(playerSelection, computerSelection));
+        if (i == 4 && computerScore > playerScore){
             return `You LOST! CPU beat you ${computerScore} times`;
         }
-        else if (playerScore > computerScore){
+        else if (i == 4 && playerScore > computerScore){
             return `You WON! you beat the CPU ${playerScore} times`;
         }
-        else {
+        else if (i == 4 && playerScore === computerScore){
             return "It's a tie";
-        }    
-
+        }   
     }
-
-    if (computerScore > playerScore){
-        return `You LOST! CPU beat you ${computerScore} times`;
-    }
-    else if (playerScore > computerScore){
-        return `You WON! you beat the CPU ${playerScore} times`;
-    }
-    else {
-        return "It's a tie";
-    }    
 }
-console.log(game(playRound));
-
-
+console.log(playGame())
