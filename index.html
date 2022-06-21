@@ -13,18 +13,49 @@
         <button id="scissors" type="button" > <img src="media/scissors.png"> </button>
     </div>
 
+    <div id="feedback"></div>
+    <div id="feedback2"></div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            let playerSelection = document.querySelector('#rock');
+            let playerSelection = document.querySelectorAll('button');
             playerSelection.addEventListener('click', function () {
-                if(computerSelection == 'PAPER') {
-                    computerScore++;
-                    document.querySelector('#feedback').textContent = `You lost this round, CPU chose ${computerSelection} and you chose ${playerSelection}`;
-                }else {
-                    playerScore++;
-                    document.querySelector('#feedback2').textContent = `You won this round, CPU chose ${computerSelection} and you chose ${playerSelection}`;
+                if(playerSelection === computerSelection) {
+                    tiedScore++;
+                    document.querySelector('#feedback2').textContent = `There are ${tiedScore} ties`;
                 }
-            }) 
+
+                if (playerSelection == '#rock') {
+                    if(computerSelection == 'PAPER'){
+                        computerScore++;
+                        document.querySelector('#feedback').textContent = `You lost, CPU chose ${computerSelection} and you chose ${playerSelection}`;
+                    }else{
+                        playerScore++;
+                        document.querySelector('#feedback').textContent = `You won, CPU chose ${computerSelection} and you chose ${playerSelection}`;
+                    }
+                }
+                else if(playerSelection == '#scissors') {
+                    if(computerSelection == 'ROCK') {
+                        computerScore++;
+                        document.querySelector('#feedback').textContent = `You lost, CPU chose ${computerSelection} and you chose ${playerSelection}`;
+                    } else {
+                        playerScore++;
+                        document.querySelector('#feedback').textContent = `You won, CPU chose ${computerSelection} and you chose ${playerSelection}`;
+                    }
+                }
+                else if (playerSelection == '#paper') {
+                    if(computerSelection == 'SCISSORS') {
+                        computerScore++;
+                        document.querySelector('#feedback').textContent = `You lost, CPU chose ${computerSelection} and you chose ${playerSelection}`;
+                    } else {
+                        playerScore++;
+                        document.querySelector('#feedback').textContent = `You won, CPU chose ${computerSelection} and you chose ${playerSelection}`;
+                    }
+                }
+                
+            })
+            
+            
         })
     </script>
 </body>
