@@ -4,9 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
 </head>
 <body>
-    
+    <div class="container">
+        <button id="paper" type="button" > <img src="media/paper.png"> </button>
+        <button id="rock" type="button" > <img src="media/rock.jpeg"> </button>
+        <button id="scissors" type="button" > <img src="media/scissors.png"> </button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let playerSelection = document.querySelector('#rock');
+            playerSelection.addEventListener('click', function () {
+                if(computerSelection == 'PAPER') {
+                    computerScore++;
+                    document.querySelector('#feedback').textContent = `You lost this round, CPU chose ${computerSelection} and you chose ${playerSelection}`;
+                }else {
+                    playerScore++;
+                    document.querySelector('#feedback2').textContent = `You won this round, CPU chose ${computerSelection} and you chose ${playerSelection}`;
+                }
+            }) 
+        })
+    </script>
 </body>
 </html>
