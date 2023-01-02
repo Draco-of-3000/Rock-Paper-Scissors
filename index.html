@@ -8,55 +8,17 @@
 </head>
 <body>
     <div class="container">
-        <button id="paper" type="button" > <img src="media/paper.png"> </button>
-        <button id="rock" type="button" > <img src="media/rock.jpeg"> </button>
-        <button id="scissors" type="button" > <img src="media/scissors.png"> </button>
+        <button class="button" id="paper" type="button" > <img src="media/paper.png"> </button>
+        <button class="button" id="rock" type="button" > <img src="media/rock.jpeg"> </button>
+        <button class="button" id="scissors" type="button" > <img src="media/scissors.png"> </button>
     </div>
 
+    <div id="playerscore">Your score: </div>
+    <div id="computerscore">WorldEater score: </div>
+    <div id="tiedscore">Ties: </div>
     <div id="feedback"></div>
     <div id="feedback2"></div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            let playerSelection = document.querySelectorAll('button');
-            playerSelection.addEventListener('click', function () {
-                if(playerSelection === computerSelection) {
-                    tiedScore++;
-                    document.querySelector('#feedback2').textContent = `There are ${tiedScore} ties`;
-                }
-
-                if (playerSelection == '#rock') {
-                    if(computerSelection == 'PAPER'){
-                        computerScore++;
-                        document.querySelector('#feedback').textContent = `You lost, CPU chose ${computerSelection} and you chose ${playerSelection}`;
-                    }else{
-                        playerScore++;
-                        document.querySelector('#feedback').textContent = `You won, CPU chose ${computerSelection} and you chose ${playerSelection}`;
-                    }
-                }
-                else if(playerSelection == '#scissors') {
-                    if(computerSelection == 'ROCK') {
-                        computerScore++;
-                        document.querySelector('#feedback').textContent = `You lost, CPU chose ${computerSelection} and you chose ${playerSelection}`;
-                    } else {
-                        playerScore++;
-                        document.querySelector('#feedback').textContent = `You won, CPU chose ${computerSelection} and you chose ${playerSelection}`;
-                    }
-                }
-                else if (playerSelection == '#paper') {
-                    if(computerSelection == 'SCISSORS') {
-                        computerScore++;
-                        document.querySelector('#feedback').textContent = `You lost, CPU chose ${computerSelection} and you chose ${playerSelection}`;
-                    } else {
-                        playerScore++;
-                        document.querySelector('#feedback').textContent = `You won, CPU chose ${computerSelection} and you chose ${playerSelection}`;
-                    }
-                }
-                
-            })
-            
-            
-        })
-    </script>
+    <script src="rps.js"></script>
 </body>
 </html>
